@@ -2,6 +2,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
+import { routes } from './app.router'
+
 
 import { AppComponent } from './components/app-component/app.component';
 import { IntroductionComponent } from './components/introduction/introduction.component';
@@ -20,7 +22,8 @@ import { RecordCardComponent } from './components/record-card/record-card.compon
   imports: [
     BrowserModule,
     FormsModule,
-    HttpModule
+    HttpModule,
+    routes
   ],
   providers: [],
   bootstrap: [AppComponent]

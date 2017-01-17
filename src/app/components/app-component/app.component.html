@@ -1,3 +1,16 @@
-<h1>
-  {{title}}
-</h1>
+ <nav>
+    <div class="nav-wrapper">
+      <a routerLink="introduction" class="brand-logo right">Fitness Points</a>
+      <ul id="nav-mobile" class="left hide-on-med-and-down">
+        <li><a routerLink="introduction">Home</a></li>
+        <li><a routerLink="instructions">Instructions</a></li>
+        <li><a routerLink="activities">Activities</a></li>
+        <li><a routerLink="recordcard">Record Card</a></li>
+      </ul>
+    </div>
+  </nav>
+
+
+<div class="container">
+  <router-outlet></router-outlet>
+</div>

@@ -25,7 +25,7 @@ export class RecordCardComponent implements OnInit {
   private activitySelect: number = 0;
   private log: string ='';
 
-  private logDropdown() {
+  logDropdown() {
     console.log('changed');
   }
     // const NAME = this.activityList.find( (item: any) => item.id == id ).name;

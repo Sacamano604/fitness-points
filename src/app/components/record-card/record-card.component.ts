@@ -23,14 +23,14 @@ export class RecordCardComponent implements OnInit {
   ];
 
   private activitySelect: number = 0;
-  private log: string ='';
+  // private log: string ='';
 
-  logDropdown() {
-    console.log('changed');
-  }
-    // const NAME = this.activityList.find( (item: any) => item.id == id ).name;
+  private logDropdown(id: number): void {
+    const selectedName = this.activityList.find( (item: any) => item.id == id ).name;
     // this.log += `Value ${NAME} was selected\n`;
-    // console.log('test');
+    console.log({ selectedName });
+
+  }
 
   constructor() { }
 

@@ -1,3 +1,31 @@
-<p>
-  record-card works!
-</p>
+<h3>Record Card</h3>
+<p>Testing form elements...</p>
+
+
+<!--<form>-->
+  <!-- Date -->
+  <label for="activityDate" class="active">Activity Date</label>
+  <input id="activityDate" type="date" class="datepicker">
+
+  <!-- Activity Code -->
+  <select #select [(ngModel)]="activity" (change)="logDropdown();">
+    <option value="" disabled selected>Choose an Activity</option>
+    <option *ngFor="let activity of activityList" [value]="activity.id">{{ activity.name }}</option>
+  </select>
+  <label>Activity Code</label>
+
+  <!-- Duration -->
+  <label for="duration" class="active">Duration</label>
+  <input id="duration" type="number">
+
+  <!-- Points Earned -->
+  <label for="pointsEarned" class="active">Points Earned</label>
+  <input id="pointsEarned" type="number">
+
+  <!-- Notes -->
+  <label for="notes">Extra Notes</label>
+  <input id="notes" class="active" length="55">
+
+  <!-- Submit Form -->
+  <a class="waves-effect waves-light btn">Submit</a>
+<!--</form>-->

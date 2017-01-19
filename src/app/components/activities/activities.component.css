@@ -1,7 +1,4 @@
-.collapsible-header {
-    font-size: 18px;
-    /*font-weight: bold;*/
-}
-.collapsible-body {
-    padding: 20px;
+.listPointTotal {
+    float: right;
+    padding-right: 50px;
 }

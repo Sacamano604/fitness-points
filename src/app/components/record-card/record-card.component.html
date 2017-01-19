@@ -22,9 +22,10 @@
   </div>
 
   <!-- Duration -->
-  <div class="duration" [hidden]="activity.value == '1' || activity.value == '3' || activity.value == '7' || activity.value == '8' || activity.value == '9' || activity.value == '10' || activity.value == '11' || activity.value == '12' || activity.value == '13'">
+  <div class="duration" [hidden]="activity.value == '' || activity.value == '1' || activity.value == '3' || activity.value == '7' || activity.value == '8' || activity.value == '9' || activity.value == '10' || activity.value == '11' || activity.value == '12' || activity.value == '13'">
     <label for="duration" class="active">Duration</label>
-    <input id="duration" class="form-control" value="{{ durationString }}" #duration>
+    <input id="duration" class="form-control" value="{{ durationString }}" #duration disabled>
+    <button class="btn btn-success" (click)="increaseDuration(duration.value)">+</button>
   </div>
   <!-- Points Earned -->
   <label for="pointsEarned" class="active">Points Earned</label>

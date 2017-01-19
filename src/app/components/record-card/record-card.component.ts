@@ -26,14 +26,18 @@ export class RecordCardComponent implements OnInit {
     { id: 1, name: 'Aerobics', pointsPerTime: 1, timePerPoints: 15 },
     { id: 2, name: 'Badminton', pointsPerTime: 1, timePerPoints: 20 },
     // Missing baseball softball here...
-    { id: 3, name: 'Basketball', pointsPerTime: 1, timePerPoints: 12 }
+    { id: 3, name: 'Basketball', pointsPerTime: 1, timePerPoints: 12 },
+    { id: 4, name: 'Bicycling/Exercise Bike', pointsPerTime: 1, timePerPoints: 15 }
   ];
 
   private maxPoints = [ 7, 8, 9, 10, 11, 12, 13]; // Values that award 200 points
   private i: number = 0;
   private pointsValue: number = 0;
-  private durationNUmber: number = 0;
+  private originalPointsValue: number = 0;
+  private durationNumber: number = 0;
+  private originalDurationNumber: number = 0;
   private durationString: string = '';
+  private durationStringtoNumber: number = 0;
 
   private activityDropdown(id: number): void {
     // Attendance
@@ -55,10 +59,21 @@ export class RecordCardComponent implements OnInit {
   }
 
   private fitnessDropdown(id: number): void {
-    this.durationNUmber = this.fitnessList.find( (item: any) => item.id == id ).timePerPoints;
-    this.pointsValue = this.fitnessList.find( (item: any) => item.id == id ).pointsPerTime;
-    this.durationString = (this.durationNUmber + ' mins');
+    this.originalDurationNumber = this.fitnessList.find( (item: any) => item.id == id ).timePerPoints;
+    this.originalPointsValue = this.fitnessList.find( (item: any) => item.id == id ).pointsPerTime;
+    this.pointsValue = this.originalPointsValue;
+    this.durationString = (this.originalDurationNumber + ' mins');
   }
+
+  private increaseDuration(durationString: string): void {
+    this.durationString = this.durationString.substring(0,2);
+    this.durationStringtoNumber = Number(this.durationString);
+    this.durationNumber = this.durationStringtoNumber + this.originalDurationNumber;
+    this.durationString = (this.durationNumber + ' mins');
+    this.pointsValue = this.pointsValue + this.originalPointsValue;
+  }
+
+
 
   constructor() { }
 

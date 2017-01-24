@@ -28,7 +28,7 @@
       <input id="duration" class="form-control" value="{{ durationString }}" #duration disabled>
       <span class="input-group-btn">
         <button class="btn btn-success" (click)="increaseDuration(duration.value)">+</button>
-        <button class="btn btn-danger">-</button>
+        <button class="btn btn-danger" (click)="decreaseDuration(duration.value)">-</button>
       </span>
     </div>
   </div>

@@ -111,7 +111,13 @@ export class RecordCardComponent {
     this.pointsValue = this.pointsValue + this.originalPointsValue;
   }
 
-
+  private decreaseDuration(durationString: string):void {
+    this.durationString = this.durationString.substring(0,2);
+    this.durationStringtoNumber = Number(this.durationString);
+    this.durationNumber = this.durationStringtoNumber - this.originalDurationNumber;
+    this.durationString = (this.durationNumber + ' ' + this.UnitofMeasurement);
+    this.pointsValue = this.pointsValue - this.originalPointsValue;
+  }
 
 
 

@@ -39,23 +39,36 @@ export class RecordCardComponent {
     { id: 13, name: 'Grouse Grind', pointsPerUnit: 1, timePerUnit: 10, UnitofMeasurement: 'mins' },
     { id: 14, name: 'Handball/Squash/Recquetball', pointsPerUnit: 1, timePerUnit: 10, UnitofMeasurement: 'mins' },
     { id: 15, name: 'Hiking', pointsPerUnit: 1, timePerUnit: 25, UnitofMeasurement: 'mins' },
-    { id: 16, name: 'Horseback Riding', pointsPerUnit: 1, timePerUnit: 20, UnitofMeasurement: 'mins' }
-
-
-    // { id: , name: '', pointsPerUnit: , timePerUnit: , UnitofMeasurement: '' }
+    { id: 16, name: 'Horseback Riding', pointsPerUnit: 1, timePerUnit: 20, UnitofMeasurement: 'mins' },
+    { id: 17, name: 'Ice Hockey', pointsPerUnit: 1, timePerUnit: 12, UnitofMeasurement: 'mins' },
+    { id: 18, name: 'Inline/Roller Blading', pointsPerUnit: 1, timePerUnit: 15, UnitofMeasurement: 'mins' },
+    { id: 19, name: 'Jogging', pointsPerUnit: 1, timePerUnit: 15, UnitofMeasurement: 'mins' },
+    { id: 20, name: 'Judo, Karate, Kick Boxing', pointsPerUnit: 1, timePerUnit: 10, UnitofMeasurement: 'mins' },
+    { id: 21, name: 'Kayaking/Canoeing', pointsPerUnit: 1, timePerUnit: 20, UnitofMeasurement: 'mins' },
+    { id: 22, name: 'Rowing', pointsPerUnit: 1, timePerUnit: 15, UnitofMeasurement: 'mins' },
+    { id: 23, name: 'Running (10 minute mile)', pointsPerUnit: 1, timePerUnit: 10, UnitofMeasurement: 'mins' },
+    { id: 24, name: 'Soccer', pointsPerUnit: 1, timePerUnit: 15, UnitofMeasurement: 'mins' },
+    { id: 25, name: 'Stair-Climbing', pointsPerUnit: 1, timePerUnit: 20, UnitofMeasurement: 'mins' },
+    { id: 26, name: 'Swimming', pointsPerUnit: 1, timePerUnit: 12, UnitofMeasurement: 'mins' },
+    { id: 27, name: 'Tennis', pointsPerUnit: 1, timePerUnit: 15, UnitofMeasurement: 'mins' },
+    { id: 28, name: 'Volleyball (beach)', pointsPerUnit: 1, timePerUnit: 12, UnitofMeasurement: 'mins' },
+    { id: 29, name: 'Volleyball (court)', pointsPerUnit: 1, timePerUnit: 30, UnitofMeasurement: 'mins' },
+    { id: 30, name: 'Walking (moderate pace)', pointsPerUnit: 1, timePerUnit: 30, UnitofMeasurement: 'mins' },
+    { id: 31, name: 'Weight Training', pointsPerUnit: 1, timePerUnit: 15, UnitofMeasurement: 'mins' },
+    { id: 32, name: 'Yoga', pointsPerUnit: 1, timePerUnit: 12, UnitofMeasurement: 'mins' }
 
   ];
 
   // Setting private variables that we will need for calculations and data binding.
   private maxPoints = [ 7, 8, 9, 10, 11, 12, 13]; // Values that award 200 points
-  private i: number = 0;
-  private pointsValue: number = 0;
-  private originalPointsValue: number = 0;
-  private durationNumber: number = 0;
-  private originalDurationNumber: number = 0;
-  private durationString: string = '';
-  private durationStringtoNumber: number = 0;
-  private UnitofMeasurement: string = '';
+  private i: number;
+  private pointsValue: number;
+  private originalPointsValue: number;
+  private durationNumber: number;
+  private originalDurationNumber: number;
+  private durationString: string;
+  private durationStringtoNumber: number;
+  private UnitofMeasurement: string;
 
   // Assigning points values if there is no calculations to be done.
   private activityDropdown(id: number): void {

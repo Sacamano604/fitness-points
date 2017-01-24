@@ -24,10 +24,15 @@
   <!-- Duration -->
   <div class="duration" [hidden]="activity.value == '' || activity.value == '1' || activity.value == '3' || activity.value == '7' || activity.value == '8' || activity.value == '9' || activity.value == '10' || activity.value == '11' || activity.value == '12' || activity.value == '13'">
     <label for="duration" class="active">Duration</label>
-    <input id="duration" class="form-control" value="{{ durationString }}" #duration disabled>
-    <button class="btn btn-success" (click)="increaseDuration(duration.value)">+</button>
+    <div class="input-group">
+      <input id="duration" class="form-control" value="{{ durationString }}" #duration disabled>
+      <span class="input-group-btn">
+        <button class="btn btn-success" (click)="increaseDuration(duration.value)">+</button>
+        <button class="btn btn-danger">-</button>
+      </span>
+    </div>
   </div>
-  
+   
   <!-- Points Earned -->
   <label for="pointsEarned" class="active">Points Earned</label>
   <input id="pointsEarned" type="number" class="form-control" value="{{ pointsValue }}" #pointsEarned disabled>
@@ -37,5 +42,5 @@
   <input id="notes" class="active" maxlength="55" class="form-control" #notes>
 
   <!-- Submit Form -->
-  <button class="btn btn-success" type="submit">Submit</button>
+  <button id="submitFormButton" class="btn btn-success" type="submit">Submit</button>
 </form>

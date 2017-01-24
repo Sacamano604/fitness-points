@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./record-card.component.css']
 })
 export class RecordCardComponent {
+  // List of all eligible activities 
   private activityList = [
     { id: 1, name: 'A - Attendance (Per Quarter)' },
     { id: 2, name: 'F - Fitness' },
@@ -21,8 +22,8 @@ export class RecordCardComponent {
     { id: 12, name: 'WL6 - Weight Loss (Maintained 6 Months)' },
     { id: 13, name: 'WL12 - Weight Loss (Maintained 12 Months)' }
   ];
-
-  private fitnessList = [
+  // List of all fitness activities within the eligible activities (when a user selects 'fitness')
+  private fitnessList = [ 
     { id: 1, name: 'Aerobics', pointsPerUnit: 1, timePerUnit: 15, UnitofMeasurement: 'mins' },
     { id: 2, name: 'Badminton', pointsPerUnit: 1, timePerUnit: 20, UnitofMeasurement: 'mins' },
     { id: 3, name: 'Baseball/Softball', pointsPerUnit: 2, timePerUnit: 1, UnitofMeasurement: 'game(s)' },
@@ -45,6 +46,7 @@ export class RecordCardComponent {
 
   ];
 
+  // Setting private variables that we will need for calculations and data binding.
   private maxPoints = [ 7, 8, 9, 10, 11, 12, 13]; // Values that award 200 points
   private i: number = 0;
   private pointsValue: number = 0;
@@ -55,6 +57,7 @@ export class RecordCardComponent {
   private durationStringtoNumber: number = 0;
   private UnitofMeasurement: string = '';
 
+  // Assigning points values if there is no calculations to be done.
   private activityDropdown(id: number): void {
     // Attendance
     if (id == 1) {
@@ -66,6 +69,7 @@ export class RecordCardComponent {
       this.pointsValue = 10;
     }
 
+    // These are the activities in the 'maxPoints' array that award the maximum points: 200.
     for (this.i = 0; this.i <= this.maxPoints.length; this.i++) {
       if (id == this.maxPoints[this.i]) {
         this.pointsValue = 200;
@@ -73,15 +77,19 @@ export class RecordCardComponent {
     }
   }
 
+  // Applies values to the points earned and duration based on the fitness activity choice.
   private fitnessDropdown(id: number): void {
+    // Finding the time per unit, points per unit and unit of measurement based on the fitness activity chosen.
     this.originalDurationNumber = this.fitnessList.find( (item: any) => item.id == id ).timePerUnit;
     this.originalPointsValue = this.fitnessList.find( (item: any) => item.id == id ).pointsPerUnit;
     this.UnitofMeasurement = this.fitnessList.find( (item: any) => item.id == id ).UnitofMeasurement;
-    
+    // Assigning the values.
     this.pointsValue = this.originalPointsValue;
     this.durationString = (this.originalDurationNumber + ' ' + this.UnitofMeasurement);
   }
 
+  // Allows the user to increase duration.
+  // Will increase the points earned also.
   private increaseDuration(durationString: string): void {
     this.durationString = this.durationString.substring(0,2);
     this.durationStringtoNumber = Number(this.durationString);

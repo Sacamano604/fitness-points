@@ -5,7 +5,7 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './record-card.component.html',
   styleUrls: ['./record-card.component.css']
 })
-export class RecordCardComponent implements OnInit {
+export class RecordCardComponent {
   private activityList = [
     { id: 1, name: 'A - Attendance (Per Quarter)' },
     { id: 2, name: 'F - Fitness' },
@@ -23,11 +23,26 @@ export class RecordCardComponent implements OnInit {
   ];
 
   private fitnessList = [
-    { id: 1, name: 'Aerobics', pointsPerTime: 1, timePerPoints: 15 },
-    { id: 2, name: 'Badminton', pointsPerTime: 1, timePerPoints: 20 },
-    // Missing baseball softball here...
-    { id: 3, name: 'Basketball', pointsPerTime: 1, timePerPoints: 12 },
-    { id: 4, name: 'Bicycling/Exercise Bike', pointsPerTime: 1, timePerPoints: 15 }
+    { id: 1, name: 'Aerobics', pointsPerUnit: 1, timePerUnit: 15, UnitofMeasurement: 'mins' },
+    { id: 2, name: 'Badminton', pointsPerUnit: 1, timePerUnit: 20, UnitofMeasurement: 'mins' },
+    { id: 3, name: 'Baseball/Softball', pointsPerUnit: 2, timePerUnit: 1, UnitofMeasurement: 'game(s)' },
+    { id: 4, name: 'Basketball', pointsPerUnit: 1, timePerUnit: 12, UnitofMeasurement: 'mins' },
+    { id: 5, name: 'Bicycling/Exercise Bike', pointsPerUnit: 1, timePerUnit: 15, UnitofMeasurement: 'mins' },
+    { id: 6, name: 'Cross Country Skiing', pointsPerUnit: 1, timePerUnit: 12, UnitofMeasurement: 'mins' },
+    { id: 7, name: 'Dancing', pointsPerUnit: 1, timePerUnit: 20, UnitofMeasurement: 'mins' },
+    { id: 8, name: 'Downhill Skiing', pointsPerUnit: 1, timePerUnit: 15, UnitofMeasurement: 'mins' },
+    { id: 9, name: 'Dragon Boat', pointsPerUnit: 1, timePerUnit: 12, UnitofMeasurement: 'mins' },
+    { id: 10, name: 'Frisbee (or Ultimate)', pointsPerUnit: 1, timePerUnit: 30, UnitofMeasurement: 'mins' },
+    { id: 11, name: 'Golf (carrying clubs)', pointsPerUnit: 2, timePerUnit: 9, UnitofMeasurement: 'holes' },
+    { id: 12, name: 'Golf (cart)', pointsPerUnit: 1, timePerUnit: 9, UnitofMeasurement: 'holes' },
+    { id: 13, name: 'Grouse Grind', pointsPerUnit: 1, timePerUnit: 10, UnitofMeasurement: 'mins' },
+    { id: 14, name: 'Handball/Squash/Recquetball', pointsPerUnit: 1, timePerUnit: 10, UnitofMeasurement: 'mins' },
+    { id: 15, name: 'Hiking', pointsPerUnit: 1, timePerUnit: 25, UnitofMeasurement: 'mins' },
+    { id: 16, name: 'Horseback Riding', pointsPerUnit: 1, timePerUnit: 20, UnitofMeasurement: 'mins' }
+
+
+    // { id: , name: '', pointsPerUnit: , timePerUnit: , UnitofMeasurement: '' }
+
   ];
 
   private maxPoints = [ 7, 8, 9, 10, 11, 12, 13]; // Values that award 200 points
@@ -38,20 +53,20 @@ export class RecordCardComponent implements OnInit {
   private originalDurationNumber: number = 0;
   private durationString: string = '';
   private durationStringtoNumber: number = 0;
+  private UnitofMeasurement: string = '';
 
   private activityDropdown(id: number): void {
     // Attendance
     if (id == 1) {
       this.pointsValue = 25;
     }
-    // Fitness
 
     // Blood Donation
     if (id == 3) {
       this.pointsValue = 10;
     }
 
-    for (this.i = 0; this.i <= this.maxPoints.length; this.i++){
+    for (this.i = 0; this.i <= this.maxPoints.length; this.i++) {
       if (id == this.maxPoints[this.i]) {
         this.pointsValue = 200;
       }
@@ -59,25 +74,31 @@ export class RecordCardComponent implements OnInit {
   }
 
   private fitnessDropdown(id: number): void {
-    this.originalDurationNumber = this.fitnessList.find( (item: any) => item.id == id ).timePerPoints;
-    this.originalPointsValue = this.fitnessList.find( (item: any) => item.id == id ).pointsPerTime;
+    this.originalDurationNumber = this.fitnessList.find( (item: any) => item.id == id ).timePerUnit;
+    this.originalPointsValue = this.fitnessList.find( (item: any) => item.id == id ).pointsPerUnit;
+    this.UnitofMeasurement = this.fitnessList.find( (item: any) => item.id == id ).UnitofMeasurement;
+    
     this.pointsValue = this.originalPointsValue;
-    this.durationString = (this.originalDurationNumber + ' mins');
+    this.durationString = (this.originalDurationNumber + ' ' + this.UnitofMeasurement);
   }
 
   private increaseDuration(durationString: string): void {
     this.durationString = this.durationString.substring(0,2);
     this.durationStringtoNumber = Number(this.durationString);
     this.durationNumber = this.durationStringtoNumber + this.originalDurationNumber;
-    this.durationString = (this.durationNumber + ' mins');
+    this.durationString = (this.durationNumber + ' ' + this.UnitofMeasurement);
     this.pointsValue = this.pointsValue + this.originalPointsValue;
   }
 
 
 
-  constructor() { }
 
-  ngOnInit() {
-  }
+
+
+
+
+
+
+
 
 }

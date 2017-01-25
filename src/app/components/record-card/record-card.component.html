@@ -21,8 +21,17 @@
     </select>
   </div>
 
+  <!-- Personal Development -->
+  <div class="personalDevelopment" [hidden]="activity.value != '5'">
+    <label for="personalDevelopment">Personal Development</label>
+    <select id="personalDevelopment" class="form-control" placeholder="Choose a Personal Development Activity" (change)="personalDevDropDown(personalActivity.value)" #personalActivity>
+      <option value="" disabled selected>Choose a Personal Development Activity</option>
+      <option *ngFor="let personalActivity of personalDevList" [value]="personalActivity.id">{{ personalActivity.name }}</option>
+    </select>
+  </div>
+
   <!-- Duration -->
-  <div class="duration" [hidden]="activity.value == '' || activity.value == '1' || activity.value == '3' || activity.value == '7' || activity.value == '8' || activity.value == '9' || activity.value == '10' || activity.value == '11' || activity.value == '12' || activity.value == '13'">
+  <div class="duration" [hidden]="activity.value == '' || activity.value == '1' || activity.value == '3' || activity.value == '4' || activity.value == '5' || activity.value == '7' || activity.value == '8' || activity.value == '9' || activity.value == '10' || activity.value == '11' || activity.value == '12' || activity.value == '13'">
     <label for="duration" class="active">Duration</label>
     <div class="input-group">
       <input id="duration" class="form-control" value="{{ durationString }}" #duration disabled>

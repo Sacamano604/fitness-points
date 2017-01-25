@@ -56,7 +56,12 @@ export class RecordCardComponent {
     { id: 30, name: 'Walking (moderate pace)', pointsPerUnit: 1, timePerUnit: 30, UnitofMeasurement: 'mins' },
     { id: 31, name: 'Weight Training', pointsPerUnit: 1, timePerUnit: 15, UnitofMeasurement: 'mins' },
     { id: 32, name: 'Yoga', pointsPerUnit: 1, timePerUnit: 12, UnitofMeasurement: 'mins' }
+  ];
 
+  // List of personal development Activities
+  private personalDevList = [
+    { id: 1, name: 'First Aid, CPR or other non-credit courses approved by Central 1', points: 10 },
+    { id: 2, name: 'Post-secondary courses', points: 25 }
   ];
 
   // Setting private variables that we will need for calculations and data binding.
@@ -82,6 +87,11 @@ export class RecordCardComponent {
       this.pointsValue = 10;
     }
 
+    // Environmental Responsibility
+    if (id == 4) {
+      this.pointsValue = 15;
+    }
+
     // These are the activities in the 'maxPoints' array that award the maximum points: 200.
     for (this.i = 0; this.i <= this.maxPoints.length; this.i++) {
       if (id == this.maxPoints[this.i]) {
@@ -101,7 +111,11 @@ export class RecordCardComponent {
     this.durationString = (this.originalDurationNumber + ' ' + this.UnitofMeasurement);
   }
 
-  // Allows the user to increase duration.
+  private personalDevDropDown(id: number): void {
+    this.pointsValue = this.personalDevList.find( (item: any) => item.id == id ).points;
+  }
+
+  // Allows the user to increase duration, if there is a duration...
   // Will increase the points earned also.
   private increaseDuration(durationString: string): void {
     this.durationString = this.durationString.substring(0,2);

@@ -64,6 +64,13 @@ export class RecordCardComponent {
     { id: 2, name: 'Post-secondary courses', points: 25 }
   ];
 
+  private volunteeringList = [
+    { id: 1, name: 'External - volunteering in the community (points per hour)', points: 5},
+    { id: 2, name: 'Internal - join committee', points: 15 },
+    { id: 3, name: 'Internal - committee meeting', points: 3 },
+    { id: 4, name: 'Internal - points per hour spend on committee business (outisde of work hours)', points: 5 }
+  ];
+
   // Setting private variables that we will need for calculations and data binding.
   private maxPoints = [ 7, 8, 9, 10, 11, 12, 13]; // Values that award 200 points
   private i: number;
@@ -113,6 +120,10 @@ export class RecordCardComponent {
 
   private personalDevDropDown(id: number): void {
     this.pointsValue = this.personalDevList.find( (item: any) => item.id == id ).points;
+  }
+
+  private volunteerDropDown(id: number): void {
+    this.pointsValue = this.volunteeringList.find( (item: any) => item.id == id ).points;
   }
 
   // Allows the user to increase duration, if there is a duration...

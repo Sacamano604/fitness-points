@@ -30,8 +30,18 @@
     </select>
   </div>
 
+  <!-- Volunteering -->
+  <div class="volunteering" [hidden]="activity.value != 6">
+    <label for="volunteering">Volunteering</label>
+    <select id="volunteering" class="form-control" placeholder="Choose a Volunteering Activity" (change)="volunteerDropDown(volunteerActivity.value)" #volunteerActivity>
+      <option value="" disabled selected>Choose a Volunteering Activity</option>
+      <option *ngFor="let volunteerActivity of volunteeringList" [value]="volunteerActivity.id">{{ volunteerActivity.name }}</option>
+    </select>
+  </div>
+
+
   <!-- Duration -->
-  <div class="duration" [hidden]="activity.value == '' || activity.value == '1' || activity.value == '3' || activity.value == '4' || activity.value == '5' || activity.value == '7' || activity.value == '8' || activity.value == '9' || activity.value == '10' || activity.value == '11' || activity.value == '12' || activity.value == '13'">
+  <div class="duration" [hidden]="activity.value == '' || activity.value == '1' || activity.value == '3' || activity.value == '4' || activity.value == '5' || activity.value == '6' || activity.value == '7' || activity.value == '8' || activity.value == '9' || activity.value == '10' || activity.value == '11' || activity.value == '12' || activity.value == '13'">
     <label for="duration" class="active">Duration</label>
     <div class="input-group">
       <input id="duration" class="form-control" value="{{ durationString }}" #duration disabled>

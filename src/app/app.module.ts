@@ -2,7 +2,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
-import { routes } from './app.router'
+import { routes } from './app.router';
+import { AngularFireModule } from 'angularfire2';
 
 
 import { AppComponent } from './components/app-component/app.component';
@@ -11,6 +12,15 @@ import { InstructionsComponent } from './components/instructions/instructions.co
 import { ActivitiesComponent } from './components/activities/activities.component';
 import { RecordCardComponent } from './components/record-card/record-card.component';
 import { AddRecordComponent } from './components/record-card/add-record/add-record.component';
+
+// Exporting the firebase confg.
+export const firebaseConfig = {
+  apiKey: 'AIzaSyB_qd-6xDlKlDzS2UiaqPQAOgV8cI-DT6A',
+  authDomain: 'fitness-points.firebaseapp.com',
+  databaseURL: 'https://fitness-points.firebaseio.com',
+  storageBucket: 'fitness-points.appspot.com'
+}
+
 
 @NgModule({
   declarations: [
@@ -25,7 +35,8 @@ import { AddRecordComponent } from './components/record-card/add-record/add-reco
     BrowserModule,
     FormsModule,
     HttpModule,
-    routes
+    routes,
+    AngularFireModule.initializeApp(firebaseConfig)
   ],
   providers: [],
   bootstrap: [AppComponent]

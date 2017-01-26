@@ -61,9 +61,8 @@ export class AddRecordComponent {
      this.originalDurationNumber = item[id].timePerUnit;
      this.originalPointsValue = item[id].pointsPerUnit;
      this.unitofMeasurement = item[id].UnitofMeasurement;
-
+     // Assigning the values to use in the template
      this.pointsValue = this.originalPointsValue;
-     console.log(this.originalDurationNumber);
      this.durationString = (this.originalDurationNumber + ' ' + this.unitofMeasurement);
     });
   }
@@ -85,16 +84,15 @@ export class AddRecordComponent {
   // Allows the user to increase duration, if there is a duration...
   // Will increase the points earned also.
   private increaseDuration(durationString: string): void {
-    this.durationString = this.durationString.substring(0,2);
+    this.durationString = durationString.substring(0,3);
     this.durationStringtoNumber = Number(this.durationString);
     this.durationNumber = this.durationStringtoNumber + this.originalDurationNumber;
     this.durationString = (this.durationNumber + ' ' + this.unitofMeasurement);
     this.pointsValue = this.pointsValue + this.originalPointsValue;
-    console.log(this.durationNumber);
   }
 
   private decreaseDuration(durationString: string):void {
-    this.durationString = this.durationString.substring(0,2);
+    this.durationString = durationString.substring(0,3);
     this.durationStringtoNumber = Number(this.durationString);
     this.durationNumber = this.durationStringtoNumber - this.originalDurationNumber;
     this.durationString = (this.durationNumber + ' ' + this.unitofMeasurement);

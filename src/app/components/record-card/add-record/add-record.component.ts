@@ -26,8 +26,6 @@ export class AddRecordComponent {
   private originalPointsValue: number;
   private durationNumber: number;
   private originalDurationNumber: number;
-  private durationString: string;
-  private durationStringtoNumber: number;
   private unitofMeasurement: string;
 
   // Assigning points values if there is no calculations to be done.
@@ -58,12 +56,13 @@ export class AddRecordComponent {
   // Finding and assigning the points value for fitness activity
   private fitnessDropdown(id: number): void {
     this.fitnessList.subscribe( item => { 
+     // Assigning the original values to use later in the increase/decrease functions
      this.originalDurationNumber = item[id].timePerUnit;
      this.originalPointsValue = item[id].pointsPerUnit;
-     this.unitofMeasurement = item[id].UnitofMeasurement;
      // Assigning the values to use in the template
      this.pointsValue = this.originalPointsValue;
-     this.durationString = (this.originalDurationNumber + ' ' + this.unitofMeasurement);
+     this.durationNumber = this.originalDurationNumber;
+     this.unitofMeasurement = item[id].UnitofMeasurement;
     });
   }
 
@@ -81,22 +80,16 @@ export class AddRecordComponent {
     });
   }
 
-  // Allows the user to increase duration, if there is a duration...
-  // Will increase the points earned also.
-  private increaseDuration(durationString: string): void {
-    this.durationString = durationString.substring(0,3);
-    this.durationStringtoNumber = Number(this.durationString);
-    this.durationNumber = this.durationStringtoNumber + this.originalDurationNumber;
-    this.durationString = (this.durationNumber + ' ' + this.unitofMeasurement);
-    this.pointsValue = this.pointsValue + this.originalPointsValue;
+  // Allows the user to increase duration, and points awarded per duration period
+  private increaseDuration() {
+    this.durationNumber += this.originalDurationNumber;
+    this.pointsValue += this.originalPointsValue;
   }
 
-  private decreaseDuration(durationString: string):void {
-    this.durationString = durationString.substring(0,3);
-    this.durationStringtoNumber = Number(this.durationString);
-    this.durationNumber = this.durationStringtoNumber - this.originalDurationNumber;
-    this.durationString = (this.durationNumber + ' ' + this.unitofMeasurement);
-    this.pointsValue = this.pointsValue - this.originalPointsValue;
+  // Allows the user to decrease the duration, and points awarded per duration period
+  private decreaseDuration() {
+    this.durationNumber -= this.originalDurationNumber;
+    this.pointsValue -= this.originalPointsValue;
   }
 
 }

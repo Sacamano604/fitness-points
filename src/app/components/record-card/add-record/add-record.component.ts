@@ -21,36 +21,41 @@ export class AddRecordComponent {
 
   // Setting private variables that we will need for calculations and data binding.
   private maxPoints = [ 6, 7, 8, 9, 10, 11, 12]; // IDs that award 200 points
-  private i: number;
   private pointsValue: number;
   private originalPointsValue: number;
   private durationNumber: number;
   private originalDurationNumber: number;
   private unitofMeasurement: string;
-
+  
   // Assigning points values if there is no calculations to be done.
-  private activityDropdown(id: number): void {
-    // Attendance
-    if (id == 0) {
-      this.pointsValue = 25;
-    }
+  private activityDropdown(id) {
+    const idNumber = Number(id);    
+    switch(idNumber){
+      // Attendance
+      case 0:
+        this.pointsValue = 25;
+      break;
 
-    // Blood Donation
-    if (id == 2) {
-      this.pointsValue = 10;
-    }
+      // Blood Donation
+      case 2:
+       this.pointsValue = 10;
+      break;
 
-    // Environmental Responsibility
-    if (id == 3) {
-      this.pointsValue = 15;
+      // Environmental Responsibility
+      case 3:
+        this.pointsValue = 15;
+      break;
+      
+      default:
     }
 
     // These are the activities in the 'maxPoints' array that award the maximum points: 200.
-    for (this.i = 0; this.i <= this.maxPoints.length; this.i++) {
-      if (id == this.maxPoints[this.i]) {
+    for (let i = 0; i <= this.maxPoints.length; i++) {
+      if (id == this.maxPoints[i]) {
         this.pointsValue = 200;
       }
     }
+
   }
   
   // Finding and assigning the points value for fitness activity

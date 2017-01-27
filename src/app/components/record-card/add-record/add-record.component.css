@@ -3,6 +3,7 @@
 }
 #addRecordButton {
     float: right;
+    margin-top: 20px;
 }
 #addRedcordDialog {
     max-width: 350px;

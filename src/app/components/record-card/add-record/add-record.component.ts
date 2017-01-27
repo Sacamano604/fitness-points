@@ -1,22 +1,28 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { AngularFire, FirebaseListObservable } from 'angularfire2';
+import { FormControl, FormGroup, Validators, NgForm } from '@angular/forms';
 
 @Component({
   selector: 'add-record',
   templateUrl: './add-record.component.html',
   styleUrls: ['./add-record.component.css']
 })
+
 export class AddRecordComponent {
   activityList: FirebaseListObservable<any>;
   fitnessList: FirebaseListObservable<any>;
   personalDevList: FirebaseListObservable<any>;
   volunteeringList: FirebaseListObservable<any>;
+  activityRecord: FirebaseListObservable<any>;
 
   constructor(af: AngularFire) {
+    // Drop down information
     this.activityList = af.database.list('/masterList/activityList');
     this.fitnessList = af.database.list('/masterList/fitnessList');
     this.personalDevList = af.database.list('/masterList/personalDevList');
     this.volunteeringList = af.database.list('/masterList/volunteeringList');
+    // Where we're pushing the data
+    this.activityRecord = af.database.list('/activityRecord');
   }
 
   // Setting private variables that we will need for calculations and data binding.
@@ -29,7 +35,8 @@ export class AddRecordComponent {
   
   // Assigning points values if there is no calculations to be done.
   private activityDropdown(id) {
-    const idNumber = Number(id);    
+    // For some reason my ID comes through as a string here...
+    const idNumber = parseInt(id);    
     switch(idNumber){
       // Attendance
       case 0:
@@ -50,8 +57,9 @@ export class AddRecordComponent {
     }
 
     // These are the activities in the 'maxPoints' array that award the maximum points: 200.
+    const idAsNumber = parseInt(id);
     for (let i = 0; i <= this.maxPoints.length; i++) {
-      if (id == this.maxPoints[i]) {
+      if (idAsNumber === this.maxPoints[i]) {
         this.pointsValue = 200;
       }
     }
@@ -96,5 +104,24 @@ export class AddRecordComponent {
     this.durationNumber -= this.originalDurationNumber;
     this.pointsValue -= this.originalPointsValue;
   }
+
+
+
+  addRecord(activityDate: string, activity: string, fitnessActivity: string, personalActivity: string, volunteerActivity: string, duration: string, pointsEarned: number, notes: string): void {
+    this.activityRecord.push({ activityDate: activityDate, activity: activity, fitnessActivity: fitnessActivity, personalActivity: personalActivity, volunteerActivity: volunteerActivity, duration: duration, pointsEarned: pointsEarned, notes: notes });
+    // console.log(activityDate, activity, fitnessActivity, personalActivity, volunteerActivity, duration, unitofMeasurement, pointsEarned, notes); 
+  }
+
+
+
+
+  resetForm() {
+    // Don't ask...works for now
+    document.getElementById("recordCardForm").reset();
+  }
+
+
+
+
 
 }

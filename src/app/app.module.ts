@@ -5,7 +5,6 @@ import { HttpModule } from '@angular/http';
 import { routes } from './app.router';
 import { AngularFireModule } from 'angularfire2';
 
-
 import { AppComponent } from './components/app-component/app.component';
 import { IntroductionComponent } from './components/introduction/introduction.component';
 import { InstructionsComponent } from './components/instructions/instructions.component';
@@ -20,7 +19,6 @@ export const firebaseConfig = {
   databaseURL: 'https://fitness-points.firebaseio.com',
   storageBucket: 'fitness-points.appspot.com'
 }
-
 
 @NgModule({
   declarations: [

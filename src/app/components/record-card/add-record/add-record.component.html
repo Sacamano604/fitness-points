@@ -3,14 +3,14 @@
 <div class="modal fade" id="addRecordModal" tabindex="-1" role="dialog">
   <div class="modal-dialog" id="addRedcordDialog" role="document">
     <div class="modal-content">
+      <form id="recordCardForm">
       <div class="modal-header">
         <h3 class="modal-title" id="addRecordModalTitle">Add Record</h3>  
       </div>
       <div class="modal-body">
-        <form id="recordCardForm">
           <!-- Date -->
           <label for="activityDate" class="active">Activity Date</label>
-          <input id="activityDate" type="date" class="datepicker" class="form-control" #activityDate>
+          <input id="activityDate" type="date" class="datepicker" class="form-control" required #activityDate>
 
           <!-- Activity Code -->
           <label for="activity">Activity Code</label>
@@ -52,8 +52,8 @@
             <div class="input-group">
               <input id="duration" class="form-control" value="{{ durationNumber }} {{ unitofMeasurement }}" #duration disabled>
               <span class="input-group-btn">
-                <button class="btn btn-success" (click)="increaseDuration()">+</button>
-                <button class="btn btn-danger" (click)="decreaseDuration(duration.value)">-</button>
+                <a class="btn btn-success" (click)="increaseDuration()">+</a>
+                <a class="btn btn-danger" (click)="decreaseDuration(duration.value)">-</a>
               </span>
             </div>
           </div>
@@ -65,12 +65,12 @@
           <!-- Notes -->
           <label for="notes">Extra Notes</label>
           <input id="notes" class="active" maxlength="55" class="form-control" #notes>
-        </form>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-success" data-dismiss="modal">Submit Record</button> <!-- Needs click -->
+        <button type="button" class="btn btn-success" data-dismiss="modal" (click)="addRecord(activityDate.value, activity.value, fitnessActivity.value, personalActivity.value, volunteerActivity.value, duration.value, pointsEarned.value, notes.value); resetForm();">Submit Record</button>
       </div>
+     </form>
     </div>
   </div>
 </div>

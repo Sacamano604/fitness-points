@@ -12,9 +12,10 @@ export class RecordCardComponent {
   activityList: FirebaseListObservable<any>;
 
   constructor(af: AngularFire) {
-    // this.records = af.database.list('/activityRecord');
+    this.records = af.database.list('/activityRecord');
   }
-
+  
+  
 
 
 

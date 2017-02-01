@@ -3,8 +3,26 @@
     <add-record></add-record>
 </div>
 
-<!--<div class="recordCardTable">
-    <ul>
-        <li *ngFor="let record of records | async">{{ record.activityDate }}</li>
-    </ul>
-</div>-->
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Date</th>
+            <th>Activity</th>
+            <th>Activity Details</th>
+            <th>Duration</th>
+            <th>Points Earned</th>
+            <th>Notes</th>  
+        </tr>        
+    </thead>
+    <tbody>
+        <tr *ngFor="let record of records | async">
+            <td>{{ record.activityDate }}</td>
+            <td>{{ record.activity }}</td>
+            <td>{{ record.fitnessActivity }}{{ record.personalActivity }}{{ record.volunteerActivity }}</td>
+            <td>{{ record.duration }}</td>
+            <td>{{ record.pointsEarned }}</td>
+            <td>{{ record.notes }}</td>
+        </tr>
+    </tbody>
+</table>

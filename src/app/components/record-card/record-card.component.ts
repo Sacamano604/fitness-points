@@ -13,9 +13,11 @@ export class RecordCardComponent {
 
   constructor(af: AngularFire) {
     this.records = af.database.list('/activityRecord');
+    this.activityList = af.database.list('/masterList/activityList');
   }
+
   
-  
+
 
 
 

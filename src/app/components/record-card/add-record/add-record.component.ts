@@ -32,7 +32,8 @@ export class AddRecordComponent {
   private durationNumber: number;
   private originalDurationNumber: number;
   private unitofMeasurement: string;
-  
+  private activityName: string;
+
   // Assigning points values if there is no calculations to be done.
   private activityDropdown(id) {
     // For some reason my ID comes through as a string here...
@@ -105,11 +106,22 @@ export class AddRecordComponent {
     this.pointsValue -= this.originalPointsValue;
   }
 
-
-
   addRecord(activityDate: string, activity: string, fitnessActivity: string, personalActivity: string, volunteerActivity: string, duration: string, pointsEarned: number, notes: string): void {
-    this.activityRecord.push({ activityDate: activityDate, activity: activity, fitnessActivity: fitnessActivity, personalActivity: personalActivity, volunteerActivity: volunteerActivity, duration: duration, pointsEarned: pointsEarned, notes: notes });
-    // console.log(activityDate, activity, fitnessActivity, personalActivity, volunteerActivity, duration, unitofMeasurement, pointsEarned, notes); 
+    var activityName = [];
+
+
+
+    this.activityList.subscribe( (activityList) => {
+      activityList.forEach(element => {
+        if (element.id === parseInt(activity)) {
+          activityName.push(element.name);
+          }
+      });
+    });
+    console.log(activityName);
+
+
+    // this.activityRecord.push({ activityDate: activityDate, activity: test, fitnessActivity: fitnessActivity, personalActivity: personalActivity, volunteerActivity: volunteerActivity, duration: duration, pointsEarned: pointsEarned, notes: notes });
   }
 
 

@@ -14,6 +14,16 @@ export class RecordCardService {
       return this._http.get('http://localhost:8888/fitness-points/src/app/services/record-card.php?action=fitnessActivities')
       .map(res => res.json());
     }
+    getPersonalDevActivities() {
+      return this._http.get('http://localhost:8888/fitness-points/src/app/services/record-card.php?action=personalDevActivities')
+      .map(res => res.json());
+    }
+    getVolunteerActivities() {
+      return this._http.get('http://localhost:8888/fitness-points/src/app/services/record-card.php?action=volunteerActivities')
+      .map(res => res.json());
+    }
+
+
 
 
   }

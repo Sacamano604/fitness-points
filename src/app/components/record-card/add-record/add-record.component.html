@@ -17,7 +17,7 @@
           <label for="activity">Activity Code</label>
           <select id="activity" class="form-control" placeholder="Choose an Activity" (change)="activityDropdown(activity.value)" #activity>
             <option value="" disabled selected>Choose an Activity</option>
-            <option *ngFor="let activity of activities" [value]="activity.id + ' ' + activity.activityType">{{ activity.name }}</option>
+            <option *ngFor="let activity of activities; let i = index;" [value]="i + ' ' + activity.id + ' ' + activity.activityType">{{ activity.name }}</option>
           </select>
 
           <!-- Fitness activity -->
@@ -25,7 +25,7 @@
             <label for="fitnessActivity">Fitness Activity</label>
             <select id="fitnessActivity" class="form-control" placeholder="Choose a Fitness Activity" (change)="fitnessDropdown(fitnessActivity.value)" #fitnessActivity>
               <option value="" disabled selected>Choose a Fitness Activity</option>
-              <option *ngFor="let fitnessActivity of fitnessActivities" [value]="fitnessActivity.id">{{ fitnessActivity.name }}</option>
+              <option *ngFor="let fitnessActivity of fitnessActivities; let i = index;" [value]="i + ' ' + fitnessActivity.id">{{ fitnessActivity.name }}</option>
             </select>
           </div>
 
@@ -34,7 +34,7 @@
             <label for="personalDevelopment">Personal Development</label>
             <select id="personalDevelopment" class="form-control" placeholder="Choose a Personal Development Activity" (change)="personalDevDropDown(personalActivity.value)" #personalActivity>
               <option value="" disabled selected>Choose a Personal Development Activity</option>
-              <option *ngFor="let personalActivity of personalDevList | async" [value]="personalActivity.id">{{ personalActivity.name }}</option>
+              <option *ngFor="let personalActivity of personalDevActivities; let i = index;" [value]="i + ' ' + personalActivity.id">{{ personalActivity.name }}</option>
             </select>
           </div>
 
@@ -43,7 +43,7 @@
             <label for="volunteering">Volunteering</label>
             <select id="volunteering" class="form-control" placeholder="Choose a Volunteering Activity" (change)="volunteerDropDown(volunteerActivity.value)" #volunteerActivity>
               <option value="" disabled selected>Choose a Volunteering Activity</option>
-              <option *ngFor="let volunteerActivity of volunteeringList | async" [value]="volunteerActivity.id">{{ volunteerActivity.name }}</option>
+              <option *ngFor="let volunteerActivity of volunteerActivities; let i = index;" [value]="i + ' ' + volunteerActivity.id">{{ volunteerActivity.name }}</option>
             </select>
           </div>
 

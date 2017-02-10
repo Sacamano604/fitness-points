@@ -27,7 +27,6 @@ export class AddRecordComponent {
 
   // Setting private variables that we will need for calculations and data binding.
   private category: string;
-  private maxPoints = [ 6, 7, 8, 9, 10, 11, 12]; // IDs that award 200 points
   private pointsValue: number;
   private originalPointsValue: number;
   private durationNumber: number;
@@ -108,37 +107,17 @@ export class AddRecordComponent {
   }
 
   addRecord(activityDate: string, activity: string, fitnessActivity: string, personalActivity: string, volunteerActivity: string, duration: string, pointsEarned: number, notes: string): void {
-
     const activityname = activity.split(' ').slice(2).join(' ');
-    const fitnessName = fitnessActivity.split(' ').slice(2).join(' ');
-    const personalName = personalActivity.split(' ').slice(2).join(' ');
-    const volunteerName = volunteerActivity.split(' ').slice(2).join(' ');
-
-    console.log('Date: ' + activityDate);
-    console.log('Activity: ' + activityname);
-    console.log('Fitness: ' + fitnessName);
-    console.log('Personal: ' + personalName);
-    console.log('Volunteer: ' + volunteerName);
-    console.log('Duration: ' + duration);
-    console.log('Points Earned: ' + pointsEarned);
-    console.log('Notes: ' + notes);
-    
-
-
+    const fitnessName = fitnessActivity.split(' ').slice(1).join(' ');
+    const personalName = personalActivity.split(' ').slice(1).join(' ');
+    const volunteerName = volunteerActivity.split(' ').slice(1).join(' ');
 
     this.activityRecord.push({ activityDate: activityDate, activity: activityname, fitnessActivity: fitnessName, personalActivity: personalName, volunteerActivity: volunteerName, duration: duration, pointsEarned: pointsEarned, notes: notes });
   }
-
-
-
 
   resetForm() {
     // Don't ask...works for now
     document.getElementById("recordCardForm").reset();
   }
-
-
-
-
 
 }

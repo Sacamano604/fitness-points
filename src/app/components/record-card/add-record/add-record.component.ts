@@ -33,7 +33,6 @@ export class AddRecordComponent {
   private durationNumber: number;
   private originalDurationNumber: number;
   private unitofMeasurement: string;
-  private activityName: string;
 
   // Assigning points values if there is no calculations to be done.
   private activityDropdown(activityDropdownValue) {
@@ -109,10 +108,25 @@ export class AddRecordComponent {
   }
 
   addRecord(activityDate: string, activity: string, fitnessActivity: string, personalActivity: string, volunteerActivity: string, duration: string, pointsEarned: number, notes: string): void {
-    console.log(activity);
+
+    const activityname = activity.split(' ').slice(2).join(' ');
+    const fitnessName = fitnessActivity.split(' ').slice(2).join(' ');
+    const personalName = personalActivity.split(' ').slice(2).join(' ');
+    const volunteerName = volunteerActivity.split(' ').slice(2).join(' ');
+
+    console.log('Date: ' + activityDate);
+    console.log('Activity: ' + activityname);
+    console.log('Fitness: ' + fitnessName);
+    console.log('Personal: ' + personalName);
+    console.log('Volunteer: ' + volunteerName);
+    console.log('Duration: ' + duration);
+    console.log('Points Earned: ' + pointsEarned);
+    console.log('Notes: ' + notes);
+    
 
 
-    // this.activityRecord.push({ activityDate: activityDate, activity: test, fitnessActivity: fitnessActivity, personalActivity: personalActivity, volunteerActivity: volunteerActivity, duration: duration, pointsEarned: pointsEarned, notes: notes });
+
+    this.activityRecord.push({ activityDate: activityDate, activity: activityname, fitnessActivity: fitnessName, personalActivity: personalName, volunteerActivity: volunteerName, duration: duration, pointsEarned: pointsEarned, notes: notes });
   }
 
 

@@ -4,25 +4,57 @@
 </div>
 
 <input class="form-control" (keyup)="0" [(ngModel)]="filterValue" />
-<table class="table">
+<table class="table table-hover">
     <thead>
         <tr>
-            <th>Date</th>
-            <th>Activity</th>
-            <th>Activity Details</th>
-            <th>Duration</th>
-            <th>Points Earned</th>
-            <th>Notes</th>  
+            <th id="dateColumn">Date</th>
+            <th id="activityColumn">Activity</th>
+            <th id="activityDetailsColumn">Activity Details</th>
+            <th id="durationColumn">Duration</th>
+            <th id="pointsColumn">Points Earned</th>
+            <th id="notesColumn">Notes</th>  
+            <th id="actionsColumn">Actions</th>
         </tr>        
     </thead>
     <tbody>
-        <tr *ngFor="let record of records | async | filterRecordsPipe: filterValue">
+        <tr *ngFor="let record of records | async | filterRecordsPipe: filterValue" data-toggle="collapse" data-target="#accordion" class="clickable">
             <td>{{ record.activityDate }}</td>
             <td>{{ record.activity }}</td>
             <td>{{ record.fitnessActivity }}{{ record.personalActivity }}{{ record.volunteerActivity }}</td>
             <td>{{ record.duration }}</td>
             <td>{{ record.pointsEarned }}</td>
             <td>{{ record.notes }}</td>
+            <td>
+                <button class="btn btn-info btn-xs" disabled>Edit</button>
+                <button class="btn btn-danger btn-xs" disabled>Delete</button>
+            </td>
         </tr>
+
+        <!--<ng-container *ngFor="let record of records | async; let i = index; | filterRecordsPipe: filterValue">
+            <tr class="accordion-toggle" [attr.data-target]="'#'+i" data-parent="#accordion">
+                <td>{{ record.activityDate }}</td>
+                <td>{{ record.activity }}</td>
+                <td>{{ record.fitnessActivity }}{{ record.personalActivity }}{{ record.volunteerActivity }}</td>
+                <td>{{ record.duration }}</td>
+                <td>{{ record.pointsEarned }}</td>
+                <td>{{ record.notes }}</td>
+                <td>
+                    <button class="btn btn-info btn-xs" disabled>Edit</button>
+                    <button class="btn btn-danger btn-xs" disabled>Delete</button>
+                </td>
+            </tr>
+            <tr class="collapse">
+                <td>
+                    I am the details {{ record.activity }}
+                </td>
+            </tr>
+        </ng-container>
+-->
+
+
+
     </tbody>
 </table>
+
+
+

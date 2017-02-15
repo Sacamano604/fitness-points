@@ -6,12 +6,12 @@ import { RecordCardComponent } from '../components/record-card/record-card.compo
 })
 export class FilterRecordsPipePipe implements PipeTransform {
 
-  transform(records : RecordCardComponent[], text : string) {
+  transform(records : RecordCardComponent[], inputText : string) {
+
     if (records === null) {
       return null;
     }
-     return records.filter( record => new RegExp(text, 'i').test(record.activity) );
-    }
+    return records.filter( record => new RegExp(inputText, 'i').test( (<any>Object).values( record ).join() ) )
 }
 
 

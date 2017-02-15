@@ -1,6 +1,3 @@
-#submitFormButton {
-    margin-top: 20px;
-}
 .recordCardHeader h1 {
     width: 50%;
     float: left;
@@ -8,6 +5,9 @@
 .recordCardHeader button {
     margin-top: 20px;
 }
-.recordCardTable {
-    clear: both;
+tbody {
+    font-size: 12px;
+}
+#actionsColumn {
+    width: 100px;
 }

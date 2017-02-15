@@ -116,7 +116,7 @@ export class AddRecordComponent {
   }
 
   resetForm() {
-    // Don't ask...works for now
+    // Don't ask...works for now 
     document.getElementById("recordCardForm").reset();
   }
 

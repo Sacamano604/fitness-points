@@ -11,6 +11,7 @@ import { InstructionsComponent } from './components/instructions/instructions.co
 import { ActivitiesComponent } from './components/activities/activities.component';
 import { RecordCardComponent } from './components/record-card/record-card.component';
 import { AddRecordComponent } from './components/record-card/add-record/add-record.component';
+import { FilterRecordsPipePipe } from './pipes/filter-records-pipe.pipe';
 
 // Exporting the firebase confg.
 export const firebaseConfig = {
@@ -27,7 +28,8 @@ export const firebaseConfig = {
     InstructionsComponent,
     ActivitiesComponent,
     RecordCardComponent,
-    AddRecordComponent
+    AddRecordComponent,
+    FilterRecordsPipePipe
   ],
   imports: [
     BrowserModule,

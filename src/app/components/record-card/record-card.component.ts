@@ -1,4 +1,5 @@
 import { Component, OnInit, EventEmitter, Output } from '@angular/core';
+import { Input } from '@angular/core';
 import { AngularFire, FirebaseListObservable } from 'angularfire2';
 
 @Component({
@@ -10,6 +11,8 @@ import { AngularFire, FirebaseListObservable } from 'angularfire2';
 export class RecordCardComponent {
   records: FirebaseListObservable<any>;
   activityList: FirebaseListObservable<any>;
+  
+  @Input() activity : string;
 
   constructor(af: AngularFire) {
     this.records = af.database.list('/activityRecord');

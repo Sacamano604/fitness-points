@@ -23,7 +23,7 @@
                 <td>{{ record.pointsEarned }}</td>
                 <td>
                     <button class="btn btn-info btn-xs" disabled>Edit</button>
-                    <delete-record [passedKey]="record.$key"></delete-record>
+                    <delete-record [passedKey]="record.$key" [passedRecordDate]="record.activityDate" [passedRecordActivity]="record.activity"></delete-record>
                 </td>
             </tr>
             <tr class="collapse" id="{{ record.$key }}">

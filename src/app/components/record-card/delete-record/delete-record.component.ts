@@ -8,22 +8,13 @@ import { AngularFire, FirebaseListObservable } from 'angularfire2';
 })
 
 export class DeleteRecordComponent {
-  @Input() passedKey: string;
-  @Input() passedRecordDate: string;
-  @Input() passedRecordActivity: string;
-
   records: FirebaseListObservable<any>;
-  date: string;
-  activity: string;
+  @Input() passedKey: string;
 
   constructor(af: AngularFire) {
     this.records = af.database.list('/activityRecord');
    }
   
-  passRecordInfo(date: string, activity: string) {
-    this.date = date;
-    this.activity = activity;
-  }
   deleteRecord(key: string) {
     this.records.remove(key);
   }

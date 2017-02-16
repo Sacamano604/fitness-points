@@ -16,11 +16,11 @@
     </thead>
     <tbody>
         <ng-container *ngFor="let record of records | async | filterRecordsPipe: filterValue">
-              <tr id="recordsRow" data-toggle="collapse" [attr.data-target]="'#' + record.$key">
-                <td>{{ record.activityDate }}</td>
-                <td>{{ record.activity }}</td>
-                <td>{{ record.duration }}</td>
-                <td>{{ record.pointsEarned }}</td>
+              <tr id="recordsRow">
+                <td data-toggle="collapse" [attr.data-target]="'#' + record.$key">{{ record.activityDate }}</td>
+                <td data-toggle="collapse" [attr.data-target]="'#' + record.$key">{{ record.activity }}</td>
+                <td data-toggle="collapse" [attr.data-target]="'#' + record.$key">{{ record.duration }}</td>
+                <td data-toggle="collapse" [attr.data-target]="'#' + record.$key">{{ record.pointsEarned }}</td>
                 <td>
                     <button class="btn btn-info btn-xs" disabled>Edit</button>
                     <delete-record [passedKey]="record.$key"></delete-record>

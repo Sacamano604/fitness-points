@@ -9,8 +9,7 @@
     </div>
 </div>
 
-<button class="btn btn-default">Expand All</button>
-<button class="btn btn-default">Collapse All</button>
+<button class="btn btn-default" (click)="expandedClass = !expandedClass">Expand/Collapse</button>
 <add-record></add-record>
 
 <table id="recordsTable" class="table table-hover">
@@ -37,7 +36,7 @@
             </tr>
             <tr>
                 <td class="containerCell" colspan="6">
-                    <div class="collapse" id="{{ record.$key }}">
+                    <div class="collapse" [ngClass]="{'in': expandedClass }" id="{{ record.$key }}">
                         <ul>
                             <li><strong>Activity Details:</strong> {{ record.fitnessActivity }}{{ record.personalActivity }}{{ record.volunteerActivity }}</li>
                             <li><strong>Notes:</strong> {{ record.notes }}</li>

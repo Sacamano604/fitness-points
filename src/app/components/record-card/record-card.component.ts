@@ -9,6 +9,7 @@ import { AngularFire, FirebaseListObservable } from 'angularfire2';
 })
 
 export class RecordCardComponent {
+  expandedClass: false;
   @Input() activity: string;
   
   records: FirebaseListObservable<any>;

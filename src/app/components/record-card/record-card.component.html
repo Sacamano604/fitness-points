@@ -1,9 +1,18 @@
 <div class="recordCardHeader">
     <h1>Record Card</h1>
-    <add-record></add-record>
 </div>
 
-<input class="form-control" (keyup)="0" [(ngModel)]="filterValue" />
+<div class="col-md-4" id="activitiesFilter">
+    <div class="form-group has-feedback">
+        <i class="glyphicon glyphicon-filter form-control-feedback"></i>
+        <input class="form-control" placeholder="Filter Activities..." (keyup)="0" [(ngModel)]="filterValue" />
+    </div>
+</div>
+
+<button class="btn btn-default">Expand All</button>
+<button class="btn btn-default">Collapse All</button>
+<add-record></add-record>
+
 <table id="recordsTable" class="table table-hover">
     <thead>
         <tr>
@@ -17,7 +26,7 @@
     <tbody>
         <ng-container *ngFor="let record of records | async | filterRecordsPipe: filterValue">
               <tr id="recordsRow">
-                <td data-toggle="collapse" [attr.data-target]="'#' + record.$key">{{ record.activityDate }}</td>
+                <td data-toggle="collapse" [attr.data-target]="'#' + record.$key" data-parent="#recordsRow">{{ record.activityDate }}</td>
                 <td data-toggle="collapse" [attr.data-target]="'#' + record.$key">{{ record.activity }}</td>
                 <td data-toggle="collapse" [attr.data-target]="'#' + record.$key">{{ record.duration }}</td>
                 <td data-toggle="collapse" [attr.data-target]="'#' + record.$key">{{ record.pointsEarned }}</td>
@@ -26,13 +35,15 @@
                     <delete-record [passedKey]="record.$key"></delete-record>
                 </td>
             </tr>
-            <tr class="collapse" id="{{ record.$key }}">
-                <td colspan="6">
-                    <ul>
-                        <li><strong>Activity Details:</strong> {{ record.fitnessActivity }}{{ record.personalActivity }}{{ record.volunteerActivity }}</li>
-                        <li><strong>Notes:</strong> {{ record.notes }}</li>
-                    </ul>
-                </td>
+            <tr>
+                <td class="containerCell" colspan="6">
+                    <div class="collapse" id="{{ record.$key }}">
+                        <ul>
+                            <li><strong>Activity Details:</strong> {{ record.fitnessActivity }}{{ record.personalActivity }}{{ record.volunteerActivity }}</li>
+                            <li><strong>Notes:</strong> {{ record.notes }}</li>
+                        </ul>
+                    </div>
+                </td>           
             </tr>
         </ng-container>
     </tbody>

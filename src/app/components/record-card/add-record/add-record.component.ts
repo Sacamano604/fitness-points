@@ -9,6 +9,7 @@ import { FormControl, FormGroup, Validators, NgForm } from '@angular/forms';
 })
 
 export class AddRecordComponent {
+  form: FormGroup;
   activityList: FirebaseListObservable<any>;
   fitnessList: FirebaseListObservable<any>;
   personalDevList: FirebaseListObservable<any>;

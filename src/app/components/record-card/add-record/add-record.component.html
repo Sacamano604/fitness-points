@@ -68,7 +68,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <input class="btn btn-success" id="submitButton" type="submit" value="Submit Record" data-dismiss="modal" (click)="addRecord(activityDate.value, activity.value, fitnessActivity.value, personalActivity.value, volunteerActivity.value, duration.value, pointsEarned.value, notes.value); resetForm();">
+        <input class="btn btn-success" id="submitButton" type="submit" value="Submit Record" data-dismiss="modal" (submit)="addRecord(activityDate.value, activity.value, fitnessActivity.value, personalActivity.value, volunteerActivity.value, duration.value, pointsEarned.value, notes.value); resetForm();">
       </div>
      </form>
     </div>

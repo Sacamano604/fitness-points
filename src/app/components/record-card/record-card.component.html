@@ -17,7 +17,6 @@
         <tr>
             <th id="dateColumn">Date</th>
             <th id="activityColumn">Activity</th>
-            <th id="durationColumn">Duration</th>
             <th id="pointsColumn">Points Earned</th>
             <th id="actionsColumn">Actions</th>
         </tr>        
@@ -27,7 +26,6 @@
               <tr id="recordsRow">
                 <td data-toggle="collapse" [attr.data-target]="'#' + record.$key" data-parent="#recordsRow">{{ record.activityDate }}</td>
                 <td data-toggle="collapse" [attr.data-target]="'#' + record.$key">{{ record.activity }}</td>
-                <td data-toggle="collapse" [attr.data-target]="'#' + record.$key">{{ record.duration }}</td>
                 <td data-toggle="collapse" [attr.data-target]="'#' + record.$key">{{ record.pointsEarned }}</td>
                 <td>
                     <button class="btn btn-info btn-xs" disabled>Edit</button>
@@ -39,6 +37,7 @@
                     <div class="collapse" [ngClass]="{'in': expandedClass }" id="{{ record.$key }}">
                         <ul>
                             <li><strong>Activity Details:</strong> {{ record.fitnessActivity }}{{ record.personalActivity }}{{ record.volunteerActivity }}</li>
+                            <li><strong>Duration (Fitness Only):</strong> {{ record.duration }}</li>
                             <li><strong>Notes:</strong> {{ record.notes }}</li>
                         </ul>
                     </div>

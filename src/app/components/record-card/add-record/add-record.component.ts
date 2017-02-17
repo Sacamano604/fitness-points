@@ -5,7 +5,7 @@ import { FormControl, FormGroup, Validators, NgForm } from '@angular/forms';
 @Component({
   selector: 'add-record',
   templateUrl: './add-record.component.html',
-  styleUrls: ['./add-record.component.css']
+  styleUrls: ['./add-record.component.css'],
 })
 
 export class AddRecordComponent {

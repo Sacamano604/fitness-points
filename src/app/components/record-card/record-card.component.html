@@ -33,7 +33,7 @@
                 </td>
             </tr>
             <tr>
-                <td class="containerCell" colspan="6">
+                <td class="containerCell" colspan="4">
                     <div class="collapse" [ngClass]="{'in': expandedClass }" id="{{ record.$key }}">
                         <ul>
                             <li><strong>Activity Details:</strong> {{ record.fitnessActivity }}{{ record.personalActivity }}{{ record.volunteerActivity }}</li>
@@ -44,6 +44,9 @@
                 </td>           
             </tr>
         </ng-container>
+        <tr>
+            <td colspan="4"><span style="float:left;"><add-record></add-record></span></td>
+        </tr>
     </tbody>
 </table>
 

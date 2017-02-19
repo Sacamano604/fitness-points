@@ -1,6 +1,6 @@
 import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { AngularFire, FirebaseListObservable } from 'angularfire2';
-import { FormControl, FormGroup, Validators, NgForm } from '@angular/forms';
+import { FormControl, Validators, NgForm } from '@angular/forms';
 
 @Component({
   selector: 'add-record',
@@ -9,7 +9,6 @@ import { FormControl, FormGroup, Validators, NgForm } from '@angular/forms';
 })
 
 export class AddRecordComponent {
-  form: FormGroup;
   activityList: FirebaseListObservable<any>;
   fitnessList: FirebaseListObservable<any>;
   personalDevList: FirebaseListObservable<any>;
@@ -39,50 +38,50 @@ export class AddRecordComponent {
     const index = activityDropdownValue.split(' ')[0];
     this.category = activityDropdownValue.split(' ')[1];
 
-    switch(this.category){
+    switch (this.category) {
       // Attendance
       case 'attendance':
         this.pointsValue = 25;
-      break;
+        break;
       // Blood Donation
       case 'blooddonation':
-       this.pointsValue = 10;
-      break;
+        this.pointsValue = 10;
+        break;
       // Environmental Responsibility
       case 'environmentresp':
         this.pointsValue = 15;
-      break;
+        break;
       // Quit Smoking
       case 'quitsmoking':
         this.pointsValue = 200;
-      break;
+        break;
       // Weight Loss
       case 'weightloss':
         this.pointsValue = 200;
-      break;
-      
+        break;
+
       default:
     }
   }
-  
+
   // Finding and assigning the points value for fitness activity
   private fitnessDropdown(fitnessDropdownValue) {
     const index = fitnessDropdownValue.split(' ')[0];
-    this.fitnessList.subscribe( item => { 
-     // Assigning the original values to use later in the increase/decrease functions
-     this.originalDurationNumber = item[index].timePerUnit;
-     this.originalPointsValue = item[index].pointsPerUnit;
-     // Assigning the values to use in the template
-     this.pointsValue = this.originalPointsValue;
-     this.durationNumber = this.originalDurationNumber;
-     this.unitofMeasurement = item[index].UnitofMeasurement;
+    this.fitnessList.subscribe(item => {
+      // Assigning the original values to use later in the increase/decrease functions
+      this.originalDurationNumber = item[index].timePerUnit;
+      this.originalPointsValue = item[index].pointsPerUnit;
+      // Assigning the values to use in the template
+      this.pointsValue = this.originalPointsValue;
+      this.durationNumber = this.originalDurationNumber;
+      this.unitofMeasurement = item[index].UnitofMeasurement;
     });
   }
 
   // Finding and assigning the points value for personal development activity
   private personalDevDropDown(personalDropdownValue) {
     const index = personalDropdownValue.split(' ')[0];
-    this.personalDevList.subscribe( item => {
+    this.personalDevList.subscribe(item => {
       this.pointsValue = item[index].points;
     });
   }
@@ -90,7 +89,7 @@ export class AddRecordComponent {
   // Finding and assigning the points value for volunteer activities 
   private volunteerDropDown(volunteerDropDownValue) {
     const index = volunteerDropDownValue.split(' ')[0];
-    this.volunteeringList.subscribe( item => {
+    this.volunteeringList.subscribe(item => {
       this.pointsValue = item[index].points;
     });
   }
@@ -117,8 +116,8 @@ export class AddRecordComponent {
   }
 
   resetForm() {
-    // Don't ask...works for now 
-    document.getElementById("recordCardForm").reset();
+    var resetForm = <HTMLFormElement>document.getElementById('recordCardForm');
+    resetForm.reset();
   }
 
 }

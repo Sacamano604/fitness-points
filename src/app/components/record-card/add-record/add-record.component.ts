@@ -121,3 +121,7 @@ export class AddRecordComponent {
   }
 
 }
+
+
+
+// document.getElementsByTagName("H1")[0].removeAttribute("class");

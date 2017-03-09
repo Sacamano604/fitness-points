@@ -2,6 +2,8 @@ import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { AngularFire, FirebaseListObservable } from 'angularfire2';
 import { FormControl, Validators, NgForm } from '@angular/forms';
 
+import { Record } from './record';
+
 @Component({
   selector: 'add-record',
   templateUrl: './add-record.component.html',
@@ -9,6 +11,9 @@ import { FormControl, Validators, NgForm } from '@angular/forms';
 })
 
 export class AddRecordComponent {
+
+  model = new Record('', '', '', '', '', '', 0, '');
+
   activityList: FirebaseListObservable<any>;
   fitnessList: FirebaseListObservable<any>;
   personalDevList: FirebaseListObservable<any>;
@@ -106,22 +111,33 @@ export class AddRecordComponent {
     this.pointsValue -= this.originalPointsValue;
   }
 
-  addRecord(activityDate: string, activity: string, fitnessActivity: string, personalActivity: string, volunteerActivity: string, duration: string, pointsEarned: number, notes: string): void {
+  addRecord(activityDate: string, activity: string, fitnessActivity: string, personalActivity: string, volunteerActivity: string, durationNumber: string, unitofMeasurement: string, pointsEarned: number, notes: string): void {
+    var duration = '';
     const activityname = activity.split(' ').slice(2).join(' ');
     const fitnessName = fitnessActivity.split(' ').slice(1).join(' ');
     const personalName = personalActivity.split(' ').slice(1).join(' ');
     const volunteerName = volunteerActivity.split(' ').slice(1).join(' ');
+    const durationString = durationNumber + ' ' + unitofMeasurement;
+
+    if (durationString === 'undefined undefined') {
+      var duration = '';
+    } else {
+      var duration = durationString;
+    }
+
+    console.log('SUBMITTED');
+    console.log('==========');
+    console.log('Date: ' + activityDate);
+    console.log('Activity: ' + activityname);
+    console.log('Fitness Activity: ' + fitnessName);
+    console.log('Personal Activity: ' + personalName);
+    console.log('Volunteer Activity: ' + volunteerName);
+    console.log('Duration: ' + duration);
+    console.log('Points Earned: ' + pointsEarned);
+    console.log('Notes: ' + notes);
 
     this.activityRecord.push({ activityDate: activityDate, activity: activityname, fitnessActivity: fitnessName, personalActivity: personalName, volunteerActivity: volunteerName, duration: duration, pointsEarned: pointsEarned, notes: notes });
   }
-
-  resetForm() {
-    var resetForm = <HTMLFormElement>document.getElementById('recordCardForm');
-    resetForm.reset();
-  }
-
 }
 
 
-
-// document.getElementsByTagName("H1")[0].removeAttribute("class");
